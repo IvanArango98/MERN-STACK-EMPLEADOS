@@ -47,3 +47,47 @@ exports.findOne = function(req,res)
     res.json(empleado)
   })
 }
+
+exports.update = function(req, res)
+{
+  let empleado = {
+  nombre: req.body.nombre,
+  apellido_p: req.body.apellido_m,
+  apellido_m: req.body.apellido_p,
+  telefono: req.body.telefono,
+  mail: req.body.mail,
+  direccion: req.body.direccion
+  }
+
+  Empleado.findByIdAndUpdate( req.params.id, {$set: empleado}, function(err){
+    if(err) {
+      console.error(err) 
+      response.exito = false
+      response.msg = "Error al modificar el empleado"
+      res.json(response)
+      return;
+    }
+
+    response.exito = true, 
+    response.msg = "El empleado se modificó correctamente"
+    res.json(response)
+
+  } )
+
+}
+
+exports.remove = function(req,res){
+  Empleado.findByIdAndRemove({ _id: req.params.id }, function(err){
+    if(err) {
+      console.error(err) 
+      response.exito = false
+      response.msg = "Error al eliminar el empleado"
+      res.json(response)
+      return;
+    }
+
+    response.exito = true, 
+    response.msg = "El empleado se eliminó correctamente"
+    res.json(response)
+  })
+}
