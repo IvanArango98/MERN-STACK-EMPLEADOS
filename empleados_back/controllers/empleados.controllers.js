@@ -78,7 +78,7 @@ exports.update = function(req, res)
 
 exports.remove = function(req,res){
   Empleado.findByIdAndRemove({ _id: req.params.id }, function(err){
-    if(err) {
+    if(err){
       console.error(err) 
       response.exito = false
       response.msg = "Error al eliminar el empleado"
