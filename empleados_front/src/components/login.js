@@ -26,7 +26,7 @@ export default class Login extends React.Component
                     xs="12"
                     >
                     <Row>
-                        <h2 style={{width: "100%"}}>Iniciar sesión</h2>
+                        <h2>Iniciar sesión</h2>
                     </Row>
                         <Row>  
                             <Col
@@ -38,7 +38,7 @@ export default class Login extends React.Component
                             >     
                             <Form style={{width: "100%"}}>                    
                             <Form.Group>
-                            <Form.Label style= {{float:"left"}}>Usuario</Form.Label>
+                            <Form.Label>Usuario</Form.Label>
                             <Form.Control type="text" placeholder="Enter username" 
                              onChange={ e => this.setState({ usuario: e.target.value } ) }                         
                             />                                            
@@ -49,7 +49,7 @@ export default class Login extends React.Component
 
                             </Form.Group>
                             <Form.Group>
-                            <Form.Label style= {{float:"left"}}>Contraseña</Form.Label>
+                            <Form.Label>Contraseña</Form.Label>
                             <Form.Control type="password" placeholder="Enter password" 
                             onChange={ e => this.setState({ pass: e.target.value } ) }                         
                             />
@@ -57,7 +57,7 @@ export default class Login extends React.Component
                                 this.state.pass
                             }
                             </Form.Group>                
-                            <Button variant="primary" style= {{width:"100%"}}
+                            <Button variant="primary" 
                              onClick={() => this.iniciarSesion() }
                             >
                             Iniciar Sesion

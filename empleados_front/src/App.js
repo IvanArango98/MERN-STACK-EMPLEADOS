@@ -1,15 +1,17 @@
-import { Form ,Button, Container} from 'react-bootstrap';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Login from './components/login';
+import AppRouter from './components/router/router'
+import TopMenu from './components/navbar/navbar';
+import {Container} from 'react-bootstrap'
 
 
 function App() {
   return (
     <div className="App">
       <Container>
-   <Login />
+      <TopMenu/>
+   <AppRouter />
    
 </Container>
     </div>

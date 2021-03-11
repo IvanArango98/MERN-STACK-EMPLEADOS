@@ -1,0 +1,16 @@
+#navbar #navbar-sub-brand{
+    font-size: 15px;
+}
+
+#navbar #Dropdown-header .row:nth-child(1){
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar #Dropdown-header .row:nth-child(2){
+    margin-top: 10px;
+    font-size: 16px;  
+    display: flex;  
+    justify-content: center;  
+}
