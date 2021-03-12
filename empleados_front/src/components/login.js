@@ -1,7 +1,14 @@
 import React from 'react';
+import axios from 'axios'
 import './login.css';
 import { Container,Form ,Button, Row,Col} from 'react-bootstrap';
+import {APIHOST as host} from '../App.json'
+import { isNull } from 'util'
+import Cookies from 'universal-cookie'
+import { calculaExpiracionSesion } from './helpers/helpers'
+import Loading from './loading/loading'
 
+const cookies = new Cookies();
 
 export default class Login extends React.Component 
 {
@@ -9,17 +16,41 @@ export default class Login extends React.Component
         super(props);
         this.state = {
             usuario: "",
-            pass: ""
+            pass: "",
+            loading:false
         }     
     }
 
     iniciarSesion()
     {
-        alert(`Usuario: ${this.state.usuario} - Password: ${this.state.pass}`)
+        this.setState({loading:true});
+        axios.post(`${host}/usuarios/login`, 
+        {usuario: this.state.usuario,
+            pass: this.state.pass
+        }).then( response => {
+            if(isNull(response.data.token))
+            {
+                alert("Usuario y/o contraseña invalido")
+            }
+            else{
+                cookies.set("_s",response.data.token,{
+                    path: "/", 
+                    expires: calculaExpiracionSesion()
+                })
+            }
+            this.setState({loading:false});
+        }).catch(err => {
+            console.error(err)
+            this.setState({loading:false});
+        })
+               
     }
     render() { 
         return (
             <Container id = "login-container">
+                <Loading
+                show = {this.state.loading}
+                />
                 <Row>
                     <Col
                     sm="12"
@@ -43,19 +74,13 @@ export default class Login extends React.Component
                              onChange={ e => this.setState({ usuario: e.target.value } ) }                         
                             />                                            
 
-                            {
-                                this.state.usuario
-                            }   
-
                             </Form.Group>
                             <Form.Group>
                             <Form.Label>Contraseña</Form.Label>
                             <Form.Control type="password" placeholder="Enter password" 
                             onChange={ e => this.setState({ pass: e.target.value } ) }                         
                             />
-                            {
-                                this.state.pass
-                            }
+                        
                             </Form.Group>                
                             <Button variant="primary" 
                              onClick={() => this.iniciarSesion() }
