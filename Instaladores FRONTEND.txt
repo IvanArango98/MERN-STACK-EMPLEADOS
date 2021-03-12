@@ -1,0 +1,22 @@
+Componentes a instalar - react compu en cmd
+npm install -g create-react-app
+
+crear react app en DIRECTORIO DE PROYECTO en cmd
+create-react-app nombre_front
+
+Instalar react bootstrap
+npm install react-bootstrap bootstrap
+
+Agregar bootstrap al app.js
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+Agregar componentes del app.js
+import { Form ,Button, Container} from 'react-bootstrap';
+
+Instalar react Font Awesome
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+Instalar react router
+npm install react-router-dom
