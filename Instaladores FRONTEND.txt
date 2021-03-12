@@ -20,3 +20,13 @@ npm install --save @fortawesome/react-fontawesome
 
 Instalar react router
 npm install react-router-dom
+
+Instalar axios
+npm install axios
+
+En Backend instalar cors, politicas de conexion
+npm install cors
+
+instalar universal cookie 
+https://openbase.com/js/universal-cookie
+npm i universal-cookie 
