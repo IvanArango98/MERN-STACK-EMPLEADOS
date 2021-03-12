@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var database = require('./Config/database');
 var auth = require("./auth/main_auth")
+var cors = require('cors')
 
 var EmpleadosRouter = require('./routes/empleados.router');
 var UsuariosRouter = require("./routes/usuario.router");
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 //conectar a base de datos mongo
 database.mongoConnect();
