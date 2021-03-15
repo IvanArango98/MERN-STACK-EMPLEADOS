@@ -14,7 +14,7 @@ const jwt = require("jsonwebtoken");
          response.token = jwt.sign({
             id: usuario._id,
             usuario: usuario.usuario
-         }, "123")
+         }, "1234")
      }
 
      res.json(response);
