@@ -1,0 +1,15 @@
+#empleados-buscar-container{
+    margin-top: 150px;
+}
+
+.react-bs-table-sizePerPage-dropdown .dropdown-toggle
+{
+    float: left;
+    margin-bottom: 20px;
+}
+
+.react-bootstrap-table
+{
+    width: 100%;
+}
+
