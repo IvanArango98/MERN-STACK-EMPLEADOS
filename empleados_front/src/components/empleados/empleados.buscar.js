@@ -1,83 +1,37 @@
 import React from 'react';
 import {request} from '../helpers/helpers'
-import { Container, Row } from 'react-bootstrap'
-import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory,{PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
+import { Container, Row, Col} from 'react-bootstrap'
 import './empleados.css'
+import DataGrid from '../grid/grid'
 
-const products = [
-    {
-        id: 1,
-        name: "producto 1",
-        price: 1000
-    },
-    {
-        id: 2,
-        name: "producto 2",
-        price: 1000
-    },
-    {
-        id: 3,
-        name: "producto 3",
-        price: 1000
-    },
-    {
-        id: 4,
-        name:"producto 4",
-        price: 1000
-    },
-    {
-        id: 5,
-        name: "producto 5",
-        price: 1000
-    },
-    {
-        id: 6,
-        name: "producto 6",
-        price: 1000
-    },
-    {
-        id: 1,
-        name: "producto 1",
-        price: 1000
-    },
-    {
-        id: 2,
-        name: "producto 2",
-        price: 1000
-    },
-    {
-        id: 3,
-        name: "producto 3",
-        price: 1000
-    },
-    {
-        id: 4,
-        name:"producto 4",
-        price: 1000
-    },
-    {
-        id: 5,
-        name: "producto 5",
-        price: 1000
-    },
-    {
-        id: 6,
-        name: "producto 6",
-        price: 1000
-    },
-
-];
 const columns = [{
-  dataField: 'id',
-  text: 'Product ID'
+  dataField: '_id',
+  text: 'ID',
+  hidden: true
 }, {
-  dataField: 'name',
-  text: 'Product Name'
+  dataField: 'nombre',
+  text: 'Nombre'
 }, {
-  dataField: 'price',
-  text: 'Product Price'
-}];
+  dataField: 'apellido_p',
+  text: 'Apellido paterno'
+}
+, {
+    dataField: 'apellido_m',
+    text: 'Apellido materno'
+  }
+  , {
+    dataField: 'telefono',
+    text: 'Télefono'
+  }
+  , {
+    dataField: 'mail',
+    text: 'Correo electronico'
+  }
+  , {
+    dataField: 'direccion',
+    text: 'Dirección'
+  }
+];
 
 export default class EmpleadosBuscar extends React.Component {
     constructor(props) {
@@ -85,54 +39,24 @@ export default class EmpleadosBuscar extends React.Component {
         this.state = {  }
     }
 
-        componentDidMount(){
-            request.get("/empleados").then( response => {
-                console.log(response.data)
-            }).catch(err => {
-                console.error(err)
-            })
+        componentDidMount(){          
         }
 
     render() { 
 
-        const options = {
-            custom: true,
-            totalSize: products.lenght
-        };
+    
         return (  
 
             <Container id="empleados-buscar-container">
             <Row>
                 <h1>Buscar empleado</h1>
             </Row>        
-            <Row>
-               
-                <PaginationProvider pagination={ paginationFactory(options) }
-                >
-                    {
-                      ({
-                          paginationProps,
-                          paginationTableProps
-                      }) => (
-                                <>  
-                              <SizePerPageDropdownStandalone
-                              { ...paginationProps}                              
-                              />
-                              <BootstrapTable
-                              keyField="id"
-                              data={products}
-                              columns= { columns }
-                              { ...paginationTableProps}                                                            
-                              />                                                  
-                               <PaginationListStandalone
-                              { ...paginationProps}
-                              />
-                       </>
-                      )
-                    }                    
-                </PaginationProvider>
-
-                
+            
+            <Row>           
+            <DataGrid
+                url="/empleados"
+                columns={columns}
+            />
             </Row>
 
             </Container>
@@ -142,4 +66,4 @@ export default class EmpleadosBuscar extends React.Component {
     }
 }
  
- 
+
