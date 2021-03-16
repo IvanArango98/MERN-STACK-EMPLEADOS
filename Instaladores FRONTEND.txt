@@ -30,3 +30,10 @@ npm install cors
 instalar universal cookie 
 https://openbase.com/js/universal-cookie
 npm i universal-cookie 
+
+instalar react-boostrap-table2
+https://react-bootstrap-table.github.io/react-bootstrap-table2/docs/getting-started.html
+Esta pagina tiene ejemplos de como crear tablas dinamicas.
+npm install react-bootstrap-table-next --save
+npm install react-bootstrap-table2-paginator --save
+npm install react-bootstrap-table2-toolkit --save
