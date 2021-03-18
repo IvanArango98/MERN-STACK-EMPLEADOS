@@ -9,8 +9,8 @@ exports.create = function(req,res)
   let empleado = new Empleado(
   {
 nombre: req.body.nombre,
-apellido_p: req.body.apellido_m,
-apellido_m: req.body.apellido_p,
+apellido_p: req.body.apellido_p,
+apellido_m: req.body.apellido_m,
 telefono: req.body.telefono,
 mail: req.body.mail,
 direccion: req.body.direccion
@@ -52,8 +52,8 @@ exports.update = function(req, res)
 {
   let empleado = {
   nombre: req.body.nombre,
-  apellido_p: req.body.apellido_m,
-  apellido_m: req.body.apellido_p,
+  apellido_p: req.body.apellido_p,
+  apellido_m: req.body.apellido_m,
   telefono: req.body.telefono,
   mail: req.body.mail,
   direccion: req.body.direccion
