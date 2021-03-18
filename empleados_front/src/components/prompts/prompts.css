@@ -1,0 +1,11 @@
+#message-prompt
+{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#message-prompt .modal-content
+{
+    width: auto;    
+}

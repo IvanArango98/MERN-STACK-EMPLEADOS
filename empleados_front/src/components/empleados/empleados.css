@@ -1,5 +1,39 @@
-#empleados-buscar-container{
+#empleados-crear-container,
+#empleados-buscar-container
+{
+    margin-top: 50px;
+}
+
+#empleados-crear-container .form-label
+{
+    float: left;
+}
+
+#empleados-crear-container form
+{
+    width: 100%;
+}
+
+#empleados-crear-container button
+{
+    float: right;
+    margin-top: 10px;
+}
+
+#empleados-container
+{
     margin-top: 150px;
+}
+
+#empleados-container h1
+{
+    margin-bottom: 30px;
+}
+
+#empleados-container > .row,
+#empleados-container > .row > .nav-tabs
+{
+    width: 100%;
 }
 
 .react-bs-table-sizePerPage-dropdown .dropdown-toggle
