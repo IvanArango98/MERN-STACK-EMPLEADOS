@@ -3,12 +3,13 @@ import { Container, Row, Form, Button } from 'react-bootstrap';
 import { request } from '../../helpers/helpers'
 import Loading from '../../loading/loading'
 import MessagePrompt from '../../prompts/message'
+import ConfirmationPrompt from '../../prompts/confirmar'
 
-
-export default  class EmpleadosCrear extends React.Component {
+export default  class EmpleadosEditar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {  
+            idEmpleado: this.props.getIdEmpleado(),
             redirect: false,
             message: {
                 text:"",
@@ -22,9 +23,55 @@ export default  class EmpleadosCrear extends React.Component {
                 telefono:"",                
                 mail:"",                
                 direccion:""                
+            },
+            confirmation: {
+                titulo:"Modificar Empleado",
+                texto:"¿Deseas modificar el empleado?",
+                show:false               
             }
         }
         this.onExitedMessage = this.onExitedMessage.bind(this)
+        this.onCancel = this.onCancel.bind(this)
+        this.onConfirm = this.onConfirm.bind(this)
+    }
+
+    componentDidMount()
+    {
+        this.getIdEmpleado()
+    }
+
+    onCancel()
+    {
+        this.setState({
+            confirmation: {
+                ...this.state.confirmation,
+                show: false
+            }
+        })
+    }
+    onConfirm()
+    {
+        this.setState({
+            confirmation: {
+                ...this.state.confirmation,
+                show: false
+            }
+        },  this.guardarEmpleado());   
+    }
+   
+    getIdEmpleado()
+    {
+        this.setState({loading: true})
+        request.get(`/empleados/${this.state.idEmpleado}`).then( response => {          
+            this.setState({
+                 empleado: response.data
+                ,loading: false
+            })
+            console.log(response)
+        }).catch(err => {
+            console.error(err)
+            this.setState({loading: false})
+        })        
     }
 
     setValue(index, value)
@@ -40,7 +87,7 @@ export default  class EmpleadosCrear extends React.Component {
     guardarEmpleado()
     {   
         this.setState({loading: true})
-        request.post("/empleados",this.state.empleado).then( response => 
+        request.put(`/empleados/${this.state.idEmpleado}`,this.state.empleado).then( response => 
             {
                 this.setState({loading: false})
 
@@ -82,60 +129,69 @@ export default  class EmpleadosCrear extends React.Component {
                     show= {this.state.message.show}
                     duration={2500}
                     onExited= {this.onExitedMessage}
-                />                              
+                />         
+
+                <ConfirmationPrompt
+                    show={this.state.confirmation.show}
+                    titulo={this.state.confirmation.titulo}
+                    texto={this.state.confirmation.texto}
+                    onCancel={ this.onCancel }
+                    onConfirm={ this.onConfirm }
+                />
+                
                 <Loading
                 show = {this.state.loading}
                 />
 
             <Row>
-                <h1>Crear empleado</h1>
+                <h1>Editar empleado</h1>
             </Row> 
             <Row>
             <Form>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group>
                 <Form.Label>Nombre</Form.Label>
-                <Form.Control 
-                type="text" 
+                <Form.Control                 
+                value={this.state.empleado.nombre}
                 onChange= { e => this.setValue("nombre",e.target.value)}
                 />                
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
                 <Form.Label>Apellido Paterno</Form.Label>
-                <Form.Control
-                 type="text" 
+                <Form.Control                 
+                 value={this.state.empleado.apellido_p}
                  onChange= { e => this.setValue("apellido_p",e.target.value)}
                  />  
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
                 <Form.Label>Apellido Materno</Form.Label>
-                <Form.Control 
-                type="text" 
+                <Form.Control                 
+                value={this.state.empleado.apellido_m}
                 onChange= { e => this.setValue("apellido_m",e.target.value)}
                 />  
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
                 <Form.Label>Teléfono</Form.Label>
-                <Form.Control 
-                type="text" 
+                <Form.Control                 
+                value={this.state.empleado.telefono}
                 onChange= { e => this.setValue("telefono",e.target.value)}
                 />  
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
                 <Form.Label>Email</Form.Label>
-                <Form.Control 
-                type="text" 
+                <Form.Control                 
+                value={this.state.empleado.mail}
                 onChange= { e => this.setValue("mail",e.target.value)}
                 />  
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group>
                 <Form.Label> Dirección</Form.Label>
-                <Form.Control 
-                type="text" 
+                <Form.Control                
+                value={this.state.empleado.direccion}
                 onChange= { e => this.setValue("direccion",e.target.value)}
                 />  
             </Form.Group>
@@ -143,7 +199,11 @@ export default  class EmpleadosCrear extends React.Component {
             <Button 
             variant="primary" 
             onClick = { () => 
-                this.guardarEmpleado()                
+                this.setState({ confirmation: {
+                    ...this.state.confirmation, show: true
+                }})
+
+                //this.guardarEmpleado()                
             }            
             >
                 Crear usuario
