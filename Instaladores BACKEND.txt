@@ -1,0 +1,26 @@
+INSTALAR EXPRESS en CMD
+npm install express-generator -g
+
+EN CMD IR AL DIRECTORIO DONDE QUIERO QUE SE CREE MI PROYECTO DE BACK END
+C:\Users\Ivan Arango\Desktop\MERN STACK - PRIMERA PAGINA
+express nombre
+npm install
+
+En el proyecto instalar
+npm install mongoose
+npm install -g nodemon
+
+Quitar carpeta de las vistas
+EN APP JS QUITAR 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+En index quitar:   res.render('index', { title: 'Express' });
+y agregar res.send("prueba sin motor de vistas")
+
+En proyecto poner
+npm uninstall jade
+
+instalar jsw
+npm install jsonwebtoken
