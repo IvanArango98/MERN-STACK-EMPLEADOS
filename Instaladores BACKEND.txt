@@ -24,3 +24,14 @@ npm uninstall jade
 
 instalar jsw
 npm install jsonwebtoken
+
+En packetJson en scripts
+poner 
+ "start": "nodemon ./bin/www"
+
+instalaciones para subir imagenes al servidor
+npm install multer
+npm install cors
+
+instalar formato de email
+npm install email-validator
