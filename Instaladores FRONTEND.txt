@@ -7,12 +7,6 @@ create-react-app nombre_front
 Instalar react bootstrap
 npm install react-bootstrap bootstrap
 
-Agregar bootstrap al app.js
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-Agregar componentes del app.js
-import { Form ,Button, Container} from 'react-bootstrap';
-
 Instalar react Font Awesome
 npm i --save @fortawesome/fontawesome-svg-core
 npm install --save @fortawesome/free-solid-svg-icons
@@ -37,3 +31,16 @@ Esta pagina tiene ejemplos de como crear tablas dinamicas.
 npm install react-bootstrap-table-next --save
 npm install react-bootstrap-table2-paginator --save
 npm install react-bootstrap-table2-toolkit --save
+
+instalar helmet
+npm i react-helmet
+
+instalar datepicker
+npm install react-datepicker --save
+
+npm install react-loader
+npm install react-bulma-components
+
+npm install jwt-decode
+npm install --save react-spinners
+
