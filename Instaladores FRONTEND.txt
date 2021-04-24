@@ -43,4 +43,3 @@ npm install react-bulma-components
 
 npm install jwt-decode
 npm install --save react-spinners
-
