@@ -46,3 +46,5 @@ npm install --save react-spinners
 
 npm install simple-react-footer
 npm i react-viewerjs
+
+react-sider react react-router-dom lodash antd
