@@ -4,6 +4,9 @@ npm install -g create-react-app
 crear react app en DIRECTORIO DE PROYECTO en cmd
 create-react-app nombre_front
 
+ES7 REACT/REDUX/GRAPHSQL/REACT-NATIVE SNIP
+
+
 Instalar react bootstrap
 npm install react-bootstrap bootstrap
 
